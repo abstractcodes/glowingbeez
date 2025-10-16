@@ -11,49 +11,210 @@
             0%, 100% { opacity: 1; }
             50% { opacity: .5; }
         }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes scroll-dot {
+            0% { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(16px);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-bounce { animation: bounce 2s ease-in-out infinite; }
+        .animate-scroll-dot { animation: scroll-dot 1.5s ease-in-out infinite; }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .product-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-amber-950 to-slate-900 min-h-screen">
     
-    <!-- Hero Section -->
-    <header class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent"></div>
-        <div class="container mx-auto px-4 py-16 relative text-center">
-            <div class="flex items-center justify-center gap-3 mb-4">
-                <svg class="w-12 h-12 text-amber-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
-                </svg>
-                <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200">
-                    GlowingBeez
-                </h1>
-                <svg class="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                </svg>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-900/98 backdrop-blur-md border-b border-amber-500/30 z-40 shadow-lg shadow-black/50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300">GlowingBeez</span>
+                </div>
+                <div class="flex gap-8">
+                    <button onclick="showHome()" id="home-tab" class="text-amber-300 hover:text-amber-100 font-semibold transition-colors border-b-2 border-amber-400 pb-1">Home</button>
+                    <button onclick="showCustomOrder()" id="custom-tab" class="text-amber-300/60 hover:text-amber-100 font-semibold transition-colors pb-1">Custom Order</button>
+                </div>
             </div>
-            <p class="text-amber-100 text-xl mb-2">Handcrafted Candles for Every Occasion</p>
-            <p class="text-amber-200/70 max-w-2xl mx-auto">
-                From budget-friendly to ultra-luxury, discover our complete range of artisan candles. 
-                Each piece lovingly handmade to illuminate your special moments.
-            </p>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header id="hero-banner" class="relative overflow-hidden min-h-screen flex items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://i.imgur.com/fV6yvuz.jpeg" alt="Candles Background" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative text-center z-10">
+            <div class="fade-in-up">
+                <div class="mb-8">
+                    <h1 class="text-7xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-2 drop-shadow-2xl" style="text-shadow: 0 0 40px rgba(251, 191, 36, 0.5);">
+                        GlowingBeez
+                    </h1>
+                    <div class="flex items-center justify-center gap-4 mt-4">
+                        <div class="h-px w-20 bg-gradient-to-r from-transparent to-amber-400"></div>
+                        <svg class="w-8 h-8 text-amber-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <div class="h-px w-20 bg-gradient-to-l from-transparent to-amber-400"></div>
+                    </div>
+                </div>
+                <p class="text-amber-100 text-3xl md:text-4xl mb-3 font-light tracking-wide drop-shadow-lg">Handcrafted Candles for Every Occasion</p>
+                <p class="text-amber-200/90 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-md backdrop-blur-sm bg-black/20 py-4 px-6 rounded-2xl">
+                    From budget-friendly to ultra-luxury, discover our complete range of artisan candles. 
+                    Each piece lovingly handmade to illuminate your special moments.
+                </p>
+                <button onclick="smoothScrollToProducts()" 
+                        class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:via-orange-600 hover:to-amber-700 
+                               text-white font-bold text-lg px-12 py-5 rounded-full transition-all duration-300 shadow-2xl hover:shadow-amber-500/50 hover:scale-110 transform">
+                    ✨ Explore Our Collection ✨
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Products Grid -->
-    <main class="container mx-auto px-4 py-12">
-        <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
-    </main>
+    <!-- Home Section -->
+    <div id="home-section">
+        <!-- Products Grid -->
+        <main id="products-section" class="container mx-auto px-4 py-20 relative">
+            <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23fbbf24\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            <div class="text-center mb-16 relative z-10">
+                <h2 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-4">
+                    Our Candle Collection
+                </h2>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
+                    <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
+                </div>
+                <p class="text-amber-200/70 mt-4 text-lg">Discover the perfect candle for every moment</p>
+            </div>
+            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10"></div>
+        </main>
+    </div>
+
+    <!-- Custom Order Section -->
+    <div id="custom-order-section" class="hidden container mx-auto px-4 py-20" style="padding-top: 100px;">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300 mb-4">
+                Custom Order
+            </h2>
+            <p class="text-amber-200/70 text-center mb-12">
+                Want a unique candle design? Fill out the form below and we'll bring your vision to life!
+            </p>
+
+            <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/20">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Custom Candle Order - GlowingBeez">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none">
+                
+                <div class="space-y-6">
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-amber-300 font-semibold mb-2">Your Name *</label>
+                        <input type="text" name="Name" required 
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-amber-300 font-semibold mb-2">Email Address *</label>
+                        <input type="email" name="Email" required 
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="block text-amber-300 font-semibold mb-2">Phone Number *</label>
+                        <input type="tel" name="Phone" required 
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-amber-300 font-semibold mb-2">Describe Your Custom Design *</label>
+                        <textarea name="Custom_Design_Details" required rows="5"
+                                  placeholder="Tell us about your vision - colors, scents, size, occasion, etc."
+                                  class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors"></textarea>
+                    </div>
+
+                    <!-- Photo Upload -->
+                    <div>
+                        <label class="block text-amber-300 font-semibold mb-2">Upload Reference Images (Optional)</label>
+                        <input type="file" name="attachment" accept="image/*" 
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-amber-500 file:text-white hover:file:bg-amber-600 transition-colors">
+                        <p class="text-amber-300/60 text-sm mt-2">Upload one reference image. For multiple images, we'll send you a WhatsApp link.</p>
+                    </div>
+
+                    <!-- WhatsApp Option -->
+                    <div class="bg-slate-800/30 border border-amber-500/20 rounded-lg p-4">
+                        <p class="text-amber-200 text-sm mb-3">💬 <strong>Prefer WhatsApp?</strong> Send us your custom design details directly:</p>
+                        <a href="https://wa.me/918599027036?text=Hi!%20I%20want%20to%20place%20a%20custom%20candle%20order.%20Here%20are%20my%20details:" 
+                           target="_blank"
+                           class="block w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 
+                                  text-white font-semibold py-3 rounded-lg transition-all duration-300 text-center">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 
+                                   text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                        Submit Custom Order Request
+                    </button>
+
+                    <p class="text-amber-300/60 text-sm text-center">You'll be redirected to a confirmation page after submitting</p>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Bottom Sheet Modal -->
     <div id="modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50" onclick="closeModal(event)">
         <div id="modal-sheet" class="absolute bottom-0 left-0 right-0 bg-gradient-to-br from-slate-800 to-slate-900 rounded-t-3xl border-t border-amber-500/30 shadow-2xl transform translate-y-full transition-transform duration-300 ease-out" style="height: 75vh;" onclick="event.stopPropagation()">
-            <!-- Header with close button -->
             <div class="flex items-center justify-end p-4 border-b border-amber-500/20">
                 <button onclick="closeModal()" class="text-amber-300 hover:text-amber-100 text-3xl font-bold leading-none transition-colors">&times;</button>
             </div>
-            
-            <!-- Content -->
             <div id="modal-content" class="overflow-y-auto p-6" style="height: calc(75vh - 64px);"></div>
         </div>
     </div>
@@ -61,24 +222,25 @@
     <!-- Footer -->
     <footer class="container mx-auto px-4 py-8 text-center text-amber-300/50 border-t border-amber-500/20 mt-12">
         <p>✨ GlowingBeez - Illuminating Your Special Moments ✨</p>
+        <p class="text-sm mt-2">Contact: +91-8599027036</p>
     </footer>
 
     <script>
         const candles = [
             { id: 1, name: "Flower Design Premium Scanner Aroma Candle", description: "Beautiful Flower Design Premium Scanner Aroma Candle", size: "5×4 Inch", price: "₹330", category: "Premium", image: "https://i.imgur.com/uvHryWI.png" },
-            { id: 2, name: "Designer Bowl Premium Aroma Candle", description: "Beautiful Designer Bowl Premium Aroma Candle (Box Pack)", size: "Box Pack", price: "₹500", category: "Luxury", image: "https://i.imgur.com/xqxx8KH.png" },
+            { id: 2, name: "Designer Bowl Premium Aroma Candle", description: "Beautiful Designer Bowl Premium Aroma Candle (Box Pack)", size: "Box Pack", price: "₹500", category: "Luxury", image: "https://i.imgur.com/b3SVgqI.jpeg" },
             { id: 3, name: "Designer Premium Aroma Candle", description: "Beautiful Designer Premium Aroma Candle", size: "5×3 Inch (Box Pack)", price: "₹540", category: "Luxury", image: "https://i.imgur.com/cSivpg2.png" },
-            { id: 4, name: "Real Flower Premium Fragrance Pillar", description: "Real Flower Premium Fragrance Pillar Aroma Candles", size: "3×2.7 Inch", price: "₹275", category: "Premium", image: "https://i.imgur.com/K3uVV43.png" },
-            { id: 5, name: "Flower Floating Candle", description: "Flower Floating Candle", size: "6 Candles", price: "₹159", category: "Budget", image: "https://i.imgur.com/PPQZanu.png" },
-            { id: 6, name: "Premium Glass Aroma Candle", description: "Premium Glass Aroma Candle", size: "Standard", price: "₹165", category: "Premium", image: "https://i.imgur.com/O0jJ5hG.png" },
-            { id: 7, name: "Floating Candle (Pack of 3)", description: "Floating Candle", size: "Pack of 3", price: "₹150", category: "Budget", image: "https://i.imgur.com/2PYVLtr.png" },
-            { id: 8, name: "Flower Design Pillar Candles", description: "Flower Design Pillar Candles (Pack of 5 Different Fragrances)", size: "5 Pieces Pack", price: "₹290", category: "Premium", image: "https://i.imgur.com/mRypUfm.png" },
-            { id: 9, name: "Designer Kulhad Scented Candle", description: "Designer Kulhad Scented Candles", size: "Standard", price: "₹115", category: "Budget", image: "https://i.imgur.com/gsu858z.png" },
-            { id: 10, name: "Flower Scented Candle (Palm Size)", description: "Flower Scented Candles", size: "Palm Size", price: "₹95", category: "Budget", image: "https://i.imgur.com/Vv6qnkF.png" },
-            { id: 11, name: "Flower Scented Candle (Big Size)", description: "Flower Scented Candles", size: "Big Size", price: "₹135", category: "Budget", image: "https://i.imgur.com/LquJFhs.png" },
-            { id: 12, name: "Scented Jar Candle (Medium)", description: "Scented Jar Candles", size: "Medium", price: "₹95", category: "Budget", image: "https://i.imgur.com/fu4LJiX.png" },
-            { id: 13, name: "Scented Angel Candle", description: "Scented Angel Candles - Available in Different Colors and Fragrances", size: "Standard", price: "₹105", category: "Budget", image: "https://i.imgur.com/HGSmx4j.png" },
-            { id: 14, name: "Scented Teddy Bear Candle", description: "Scented Teddy Bear Candles - Available in Different Colors and Fragrances", size: "Standard", price: "₹85", category: "Budget", image: "https://i.imgur.com/8gl7PJY.png" }
+            { id: 4, name: "Real Flower Premium Fragrance Pillar", description: "Real Flower Premium Fragrance Pillar Aroma Candles", size: "3×2.7 Inch", price: "₹275", category: "Premium", image: "https://i.imgur.com/ZrxmILl.jpeg" },
+            { id: 5, name: "Flower Floating Candle", description: "Flower Floating Candle", size: "6 Candles", price: "₹159", category: "Budget", image: "https://i.imgur.com/drPTgJm.jpeg" },
+            { id: 6, name: "Premium Glass Aroma Candle", description: "Premium Glass Aroma Candle", size: "Standard", price: "₹165", category: "Premium", image: "https://i.imgur.com/wNimZsb.jpeg" },
+            { id: 7, name: "Floating Candle (Pack of 3)", description: "Floating Candle", size: "Pack of 3", price: "₹150", category: "Budget", image: "https://i.imgur.com/a7xJvH8.jpeg" },
+            { id: 8, name: "Flower Design Pillar Candles", description: "Flower Design Pillar Candles (Pack of 5 Different Fragrances)", size: "5 Pieces Pack", price: "₹290", category: "Premium", image: "https://i.imgur.com/6oUuH1e.jpeg" },
+            { id: 9, name: "Designer Kulhad Scented Candle", description: "Designer Kulhad Scented Candles", size: "Standard", price: "₹115", category: "Budget", image: "https://amused-crimson-qn4kwmplao.edgeone.app/Kulhad%20Candle.png" },
+            { id: 10, name: "Flower Scented Candle (Palm Size)", description: "Flower Scented Candles", size: "Palm Size", price: "₹95", category: "Budget", image: "https://disappointed-amaranth-3ian0lu1vh.edgeone.app/Flower%20Scented%20Candle%20(Palm%20Size).png" },
+            { id: 11, name: "Flower Scented Candle (Big Size)", description: "Flower Scented Candles", size: "Big Size", price: "₹135", category: "Budget", image: "https://i.imgur.com/luAOjbJ.png" },
+            { id: 12, name: "Scented Jar Candle (Medium)", description: "Scented Jar Candles", size: "Medium", price: "₹95", category: "Budget", image: "https://giant-amber-qsybttflwg.edgeone.app/Scented%20Jar%20Candle.png" },
+            { id: 13, name: "Scented Angel Candle", description: "Scented Angel Candles - Available in Different Colors and Fragrances", size: "Standard", price: "₹105", category: "Budget", image: "https://i.imgur.com/ULmOZPx.jpeg" },
+            { id: 14, name: "Scented Teddy Bear Candle", description: "Scented Teddy Bear Candles - Available in Different Colors and Fragrances", size: "Standard", price: "₹85", category: "Budget", image: "https://i.imgur.com/nEOrO5N.png" }
         ];
 
         function getCategoryColor(category) {
@@ -91,11 +253,12 @@
 
         function renderProducts() {
             const grid = document.getElementById('products-grid');
-            grid.innerHTML = candles.map(candle => `
+            grid.innerHTML = candles.map((candle, index) => `
                 <div onclick="openModal(${candle.id})" 
-                     class="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 cursor-pointer 
+                     class="product-card group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 cursor-pointer 
                             border border-amber-500/20 hover:border-amber-400/50 transition-all duration-300 
-                            hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20">
+                            hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20"
+                     style="animation-delay: ${index * 0.1}s">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-amber-500/0 
                                group-hover:from-amber-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
                     
@@ -122,6 +285,30 @@
                     </div>
                 </div>
             `).join('');
+
+            // Trigger scroll animation
+            observeProducts();
+        }
+
+        function observeProducts() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is visible - fade in
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Element is not visible - fade out
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
         }
 
         function openModal(id) {
@@ -132,7 +319,6 @@
             
             content.innerHTML = `
                 <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Image Column -->
                     <div class="flex items-start justify-center">
                         <div class="w-full max-w-md">
                             <div class="aspect-square bg-gradient-to-br from-amber-900/30 to-slate-800/30 rounded-2xl 
@@ -149,7 +335,6 @@
                         </div>
                     </div>
 
-                    <!-- Details Column -->
                     <div class="flex flex-col justify-between">
                         <div>
                             <h2 class="text-3xl font-bold text-amber-50 mb-4">${candle.name}</h2>
@@ -185,7 +370,6 @@
             `;
             
             modal.classList.remove('hidden');
-            // Trigger animation after display
             setTimeout(() => {
                 modalSheet.style.transform = 'translateY(0)';
             }, 10);
@@ -201,6 +385,56 @@
                     modal.classList.add('hidden');
                 }, 300);
             }
+        }
+
+        function showHome() {
+            document.getElementById('home-section').classList.remove('hidden');
+            document.getElementById('hero-banner').classList.remove('hidden');
+            document.getElementById('custom-order-section').classList.add('hidden');
+            document.getElementById('home-tab').classList.add('border-b-2', 'border-amber-400');
+            document.getElementById('home-tab').classList.remove('text-amber-300/60');
+            document.getElementById('custom-tab').classList.remove('border-b-2', 'border-amber-400');
+            document.getElementById('custom-tab').classList.add('text-amber-300/60');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function smoothScrollToProducts() {
+            const productsSection = document.getElementById('products-section');
+            const targetPosition = productsSection.getBoundingClientRect().top + window.pageYOffset - 80;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 1500; // 1.5 seconds for smooth scroll
+            let start = null;
+
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // Easing function for smooth deceleration
+                const easeInOutCubic = progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                window.scrollTo(0, startPosition + distance * easeInOutCubic);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        function showCustomOrder() {
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('hero-banner').classList.add('hidden');
+            document.getElementById('custom-order-section').classList.remove('hidden');
+            document.getElementById('custom-tab').classList.add('border-b-2', 'border-amber-400');
+            document.getElementById('custom-tab').classList.remove('text-amber-300/60');
+            document.getElementById('home-tab').classList.remove('border-b-2', 'border-amber-400');
+            document.getElementById('home-tab').classList.add('text-amber-300/60');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Initialize
