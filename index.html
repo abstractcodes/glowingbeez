@@ -56,17 +56,17 @@
     
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-slate-900/98 backdrop-blur-md border-b border-amber-500/30 z-40 shadow-lg shadow-black/50">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4 py-3 md:py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <svg class="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
                     </svg>
-                    <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300">GlowingBeez</span>
+                    <span class="text-lg md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300">GlowingBeez</span>
                 </div>
-                <div class="flex gap-8">
-                    <button onclick="showHome()" id="home-tab" class="text-amber-300 hover:text-amber-100 font-semibold transition-colors border-b-2 border-amber-400 pb-1">Home</button>
-                    <button onclick="showCustomOrder()" id="custom-tab" class="text-amber-300/60 hover:text-amber-100 font-semibold transition-colors pb-1">Custom Order</button>
+                <div class="flex gap-4 md:gap-8">
+                    <button onclick="showHome()" id="home-tab" class="text-amber-300 hover:text-amber-100 text-sm md:text-base font-semibold transition-colors border-b-2 border-amber-400 pb-1">Home</button>
+                    <button onclick="showCustomOrder()" id="custom-tab" class="text-amber-300/60 hover:text-amber-100 text-sm md:text-base font-semibold transition-colors pb-1">Custom Order</button>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
     <header id="hero-banner" class="relative overflow-hidden min-h-screen flex items-center justify-center">
         <!-- Background Image -->
         <div class="absolute inset-0">
-            <img src="https://i.imgur.com/fV6yvuz.jpeg" alt="Candles Background" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            <img src="https://i.imgur.com/fV6yvuz.jpeg" alt="Candles Background" class="w-full h-full object-cover object-center" referrerpolicy="no-referrer">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900"></div>
         </div>
         
@@ -111,87 +111,87 @@
     <!-- Home Section -->
     <div id="home-section">
         <!-- Products Grid -->
-        <main id="products-section" class="container mx-auto px-4 py-20 relative">
+        <main id="products-section" class="container mx-auto px-4 py-12 md:py-20 relative">
             <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23fbbf24\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-            <div class="text-center mb-16 relative z-10">
-                <h2 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-4">
+            <div class="text-center mb-10 md:mb-16 relative z-10">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-3 md:mb-4 px-4">
                     Our Candle Collection
                 </h2>
-                <div class="flex items-center justify-center gap-4">
-                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
-                    <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <div class="flex items-center justify-center gap-2 md:gap-4">
+                    <div class="h-1 w-16 md:w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
+                    <svg class="w-4 h-4 md:w-6 md:h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
-                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
+                    <div class="h-1 w-16 md:w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
                 </div>
-                <p class="text-amber-200/70 mt-4 text-lg">Discover the perfect candle for every moment</p>
+                <p class="text-amber-200/70 mt-3 md:mt-4 text-sm md:text-lg px-4">Discover the perfect candle for every moment</p>
             </div>
-            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10"></div>
+            <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6 relative z-10"></div>
         </main>
     </div>
 
     <!-- Custom Order Section -->
-    <div id="custom-order-section" class="hidden container mx-auto px-4 py-20" style="padding-top: 100px;">
+    <div id="custom-order-section" class="hidden container mx-auto px-4 py-12 md:py-20" style="padding-top: 80px;">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300 mb-4">
+            <h2 class="text-3xl sm:text-4xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300 mb-3 md:mb-4">
                 Custom Order
             </h2>
-            <p class="text-amber-200/70 text-center mb-12">
+            <p class="text-amber-200/70 text-center text-sm md:text-base mb-8 md:mb-12 px-4">
                 Want a unique candle design? Fill out the form below and we'll bring your vision to life!
             </p>
 
-            <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/20">
+            <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 border border-amber-500/20">
                 <!-- FormSubmit Configuration -->
                 <input type="hidden" name="_subject" value="New Custom Candle Order - GlowingBeez">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <input type="text" name="_honey" style="display:none">
                 
-                <div class="space-y-6">
+                <div class="space-y-4 md:space-y-6">
                     <!-- Name -->
                     <div>
-                        <label class="block text-amber-300 font-semibold mb-2">Your Name *</label>
+                        <label class="block text-amber-300 text-sm md:text-base font-semibold mb-2">Your Name *</label>
                         <input type="text" name="Name" required 
-                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
                     </div>
 
                     <!-- Email -->
                     <div>
-                        <label class="block text-amber-300 font-semibold mb-2">Email Address *</label>
+                        <label class="block text-amber-300 text-sm md:text-base font-semibold mb-2">Email Address *</label>
                         <input type="email" name="Email" required 
-                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
                     </div>
 
                     <!-- Phone -->
                     <div>
-                        <label class="block text-amber-300 font-semibold mb-2">Phone Number *</label>
+                        <label class="block text-amber-300 text-sm md:text-base font-semibold mb-2">Phone Number *</label>
                         <input type="tel" name="Phone" required 
-                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base text-amber-100 focus:outline-none focus:border-amber-400 transition-colors">
                     </div>
 
                     <!-- Message -->
                     <div>
-                        <label class="block text-amber-300 font-semibold mb-2">Describe Your Custom Design *</label>
+                        <label class="block text-amber-300 text-sm md:text-base font-semibold mb-2">Describe Your Custom Design *</label>
                         <textarea name="Custom_Design_Details" required rows="5"
                                   placeholder="Tell us about your vision - colors, scents, size, occasion, etc."
-                                  class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 focus:outline-none focus:border-amber-400 transition-colors"></textarea>
+                                  class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base text-amber-100 focus:outline-none focus:border-amber-400 transition-colors"></textarea>
                     </div>
 
                     <!-- Photo Upload -->
                     <div>
-                        <label class="block text-amber-300 font-semibold mb-2">Upload Reference Images (Optional)</label>
+                        <label class="block text-amber-300 text-sm md:text-base font-semibold mb-2">Upload Reference Images (Optional)</label>
                         <input type="file" name="attachment" accept="image/*" 
-                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-4 py-3 text-amber-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-amber-500 file:text-white hover:file:bg-amber-600 transition-colors">
-                        <p class="text-amber-300/60 text-sm mt-2">Upload one reference image. For multiple images, we'll send you a WhatsApp link.</p>
+                               class="w-full bg-slate-800/50 border border-amber-500/30 rounded-lg px-3 md:px-4 py-2 md:py-3 text-xs md:text-base text-amber-100 file:mr-2 md:file:mr-4 file:py-1 md:file:py-2 file:px-3 md:file:px-4 file:rounded-full file:border-0 file:bg-amber-500 file:text-white file:text-xs md:file:text-sm hover:file:bg-amber-600 transition-colors">
+                        <p class="text-amber-300/60 text-xs md:text-sm mt-2">Upload one reference image. For multiple images, we'll send you a WhatsApp link.</p>
                     </div>
 
                     <!-- WhatsApp Option -->
-                    <div class="bg-slate-800/30 border border-amber-500/20 rounded-lg p-4">
-                        <p class="text-amber-200 text-sm mb-3">💬 <strong>Prefer WhatsApp?</strong> Send us your custom design details directly:</p>
+                    <div class="bg-slate-800/30 border border-amber-500/20 rounded-lg p-3 md:p-4">
+                        <p class="text-amber-200 text-xs md:text-sm mb-3">💬 <strong>Prefer WhatsApp?</strong> Send us your custom design details directly:</p>
                         <a href="https://wa.me/918599027036?text=Hi!%20I%20want%20to%20place%20a%20custom%20candle%20order.%20Here%20are%20my%20details:" 
                            target="_blank"
                            class="block w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 
-                                  text-white font-semibold py-3 rounded-lg transition-all duration-300 text-center">
+                                  text-white font-semibold py-2 md:py-3 rounded-lg transition-all duration-300 text-center text-sm md:text-base">
                             Order via WhatsApp
                         </a>
                     </div>
@@ -199,11 +199,11 @@
                     <!-- Submit Button -->
                     <button type="submit" 
                             class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 
-                                   text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                                   text-white font-semibold py-3 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg">
                         Submit Custom Order Request
                     </button>
 
-                    <p class="text-amber-300/60 text-sm text-center">You'll be redirected to a confirmation page after submitting</p>
+                    <p class="text-amber-300/60 text-xs md:text-sm text-center">You'll be redirected to a confirmation page after submitting</p>
                 </div>
             </form>
         </div>
@@ -211,18 +211,18 @@
 
     <!-- Bottom Sheet Modal -->
     <div id="modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50" onclick="closeModal(event)">
-        <div id="modal-sheet" class="absolute bottom-0 left-0 right-0 bg-gradient-to-br from-slate-800 to-slate-900 rounded-t-3xl border-t border-amber-500/30 shadow-2xl transform translate-y-full transition-transform duration-300 ease-out" style="height: 75vh;" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-end p-4 border-b border-amber-500/20">
-                <button onclick="closeModal()" class="text-amber-300 hover:text-amber-100 text-3xl font-bold leading-none transition-colors">&times;</button>
+        <div id="modal-sheet" class="absolute bottom-0 left-0 right-0 bg-gradient-to-br from-slate-800 to-slate-900 rounded-t-3xl border-t border-amber-500/30 shadow-2xl transform translate-y-full transition-transform duration-300 ease-out overflow-hidden" style="height: 85vh; max-height: 85vh;" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-end p-3 md:p-4 border-b border-amber-500/20">
+                <button onclick="closeModal()" class="text-amber-300 hover:text-amber-100 text-2xl md:text-3xl font-bold leading-none transition-colors">&times;</button>
             </div>
-            <div id="modal-content" class="overflow-y-auto p-6" style="height: calc(75vh - 64px);"></div>
+            <div id="modal-content" class="overflow-y-auto p-4 md:p-6" style="height: calc(85vh - 56px);"></div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="container mx-auto px-4 py-8 text-center text-amber-300/50 border-t border-amber-500/20 mt-12">
-        <p>✨ GlowingBeez - Illuminating Your Special Moments ✨</p>
-        <p class="text-sm mt-2">Contact: +91-8599027036</p>
+    <footer class="container mx-auto px-4 py-6 md:py-8 text-center text-amber-300/50 border-t border-amber-500/20 mt-8 md:mt-12">
+        <p class="text-sm md:text-base">✨ GlowingBeez - Illuminating Your Special Moments ✨</p>
+        <p class="text-xs md:text-sm mt-2">Contact: +91-8599027036</p>
     </footer>
 
     <script>
@@ -255,33 +255,33 @@
             const grid = document.getElementById('products-grid');
             grid.innerHTML = candles.map((candle, index) => `
                 <div onclick="openModal(${candle.id})" 
-                     class="product-card group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 cursor-pointer 
+                     class="product-card group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 cursor-pointer 
                             border border-amber-500/20 hover:border-amber-400/50 transition-all duration-300 
                             hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20"
                      style="animation-delay: ${index * 0.1}s">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-amber-500/0 
-                               group-hover:from-amber-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+                               group-hover:from-amber-500/10 group-hover:to-transparent rounded-xl md:rounded-2xl transition-all duration-300"></div>
                     
                     <div class="relative">
-                        <div class="w-full aspect-square bg-gradient-to-br from-amber-900/30 to-slate-800/30 rounded-xl mb-4 
+                        <div class="w-full aspect-square bg-gradient-to-br from-amber-900/30 to-slate-800/30 rounded-lg md:rounded-xl mb-2 md:mb-4 
                                    flex items-center justify-center border border-amber-500/30 overflow-hidden">
                             <img src="${candle.image}" 
                                  alt="${candle.name}" 
                                  class="w-full h-full object-cover" 
                                  referrerpolicy="no-referrer"
                                  loading="lazy"
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<svg class=\\'w-12 h-12 text-amber-400/60\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z\\'></path></svg>';">
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<svg class=\\'w-8 h-8 md:w-12 md:h-12 text-amber-400/60\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z\\'></path></svg>';">
                         </div>
                         
-                        <div class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2 bg-gradient-to-r ${getCategoryColor(candle.category)} text-white">
+                        <div class="inline-block px-1.5 md:px-2 py-0.5 md:py-1 rounded-full text-xs font-semibold mb-1 md:mb-2 bg-gradient-to-r ${getCategoryColor(candle.category)} text-white">
                             ${candle.category}
                         </div>
                         
-                        <h3 class="text-amber-50 font-semibold mb-1 line-clamp-2 group-hover:text-amber-200 transition-colors">
+                        <h3 class="text-amber-50 text-xs sm:text-sm md:text-base font-semibold mb-1 line-clamp-2 group-hover:text-amber-200 transition-colors">
                             ${candle.name}
                         </h3>
                         
-                        <p class="text-amber-300 font-bold text-lg">${candle.price}</p>
+                        <p class="text-amber-300 font-bold text-sm md:text-lg">${candle.price}</p>
                     </div>
                 </div>
             `).join('');
@@ -318,7 +318,7 @@
             const content = document.getElementById('modal-content');
             
             content.innerHTML = `
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div class="flex items-start justify-center">
                         <div class="w-full max-w-md">
                             <div class="aspect-square bg-gradient-to-br from-amber-900/30 to-slate-800/30 rounded-2xl 
@@ -329,7 +329,7 @@
                                      referrerpolicy="no-referrer"
                                      onerror="this.onerror=null; this.parentElement.innerHTML='<svg class=\\'w-16 h-16 text-amber-400\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z\\'></path></svg>';">
                             </div>
-                            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold mt-4 bg-gradient-to-r ${getCategoryColor(candle.category)} text-white">
+                            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold mt-3 md:mt-4 bg-gradient-to-r ${getCategoryColor(candle.category)} text-white">
                                 ${candle.category}
                             </div>
                         </div>
@@ -337,22 +337,22 @@
 
                     <div class="flex flex-col justify-between">
                         <div>
-                            <h2 class="text-3xl font-bold text-amber-50 mb-4">${candle.name}</h2>
+                            <h2 class="text-2xl md:text-3xl font-bold text-amber-50 mb-3 md:mb-4">${candle.name}</h2>
                             
-                            <div class="space-y-4">
+                            <div class="space-y-3 md:space-y-4">
                                 <div>
-                                    <p class="text-amber-400/70 text-sm font-semibold mb-1">Description</p>
-                                    <p class="text-amber-100 leading-relaxed">${candle.description}</p>
+                                    <p class="text-amber-400/70 text-xs md:text-sm font-semibold mb-1">Description</p>
+                                    <p class="text-amber-100 text-sm md:text-base leading-relaxed">${candle.description}</p>
                                 </div>
 
                                 <div>
-                                    <p class="text-amber-400/70 text-sm font-semibold mb-1">Size</p>
-                                    <p class="text-amber-100">${candle.size}</p>
+                                    <p class="text-amber-400/70 text-xs md:text-sm font-semibold mb-1">Size</p>
+                                    <p class="text-amber-100 text-sm md:text-base">${candle.size}</p>
                                 </div>
 
-                                <div class="pt-4 border-t border-amber-500/20">
-                                    <p class="text-amber-400/70 text-sm font-semibold mb-1">Price</p>
-                                    <p class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-300">
+                                <div class="pt-3 md:pt-4 border-t border-amber-500/20">
+                                    <p class="text-amber-400/70 text-xs md:text-sm font-semibold mb-1">Price</p>
+                                    <p class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-300">
                                         ${candle.price}
                                     </p>
                                 </div>
@@ -361,8 +361,8 @@
 
                         <a href="https://wa.me/918599027036?text=Hi!%20I'm%20interested%20in%20${encodeURIComponent(candle.name)}%20(${encodeURIComponent(candle.price)})%0A%0AImage:%20${encodeURIComponent(candle.image)}" 
                            target="_blank"
-                           class="block w-full mt-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 
-                                  text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-center text-lg">
+                           class="block w-full mt-4 md:mt-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 
+                                  text-white font-semibold py-3 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-center text-base md:text-lg">
                             💬 Order on WhatsApp
                         </a>
                     </div>
