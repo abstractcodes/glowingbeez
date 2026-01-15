@@ -65,9 +65,9 @@
                     <span class="text-lg md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-300">GlowingBeez</span>
                 </div>
                 <div class="flex gap-4 md:gap-8">
-                    <button onclick="showHome()" id="home-tab" class="text-amber-300 hover:text-amber-100 text-sm md:text-base font-semibold transition-colors border-b-2 border-amber-400 pb-1">Home</button>
-                    <button onclick="showCustomOrder()" id="custom-tab" class="text-amber-300/60 hover:text-amber-100 text-sm md:text-base font-semibold transition-colors pb-1">Custom Order</button>
-                    <button onclick="showAdminLogin()" id="admin-tab" class="text-amber-300/60 hover:text-amber-100 text-sm md:text-base font-semibold transition-colors pb-1">Admin</button>
+                    <button onclick="showHome()" id="home-tab" class="text-amber-300 hover:text-amber-100 text-sm md:text-base font-semibold transition-all duration-300 border-b-2 border-amber-400 pb-1">Home</button>
+                    <button onclick="showCustomOrder()" id="custom-tab" class="text-amber-300/60 hover:text-amber-100 text-sm md:text-base font-semibold transition-all duration-300 pb-1 border-b-2 border-transparent">Custom Order</button>
+                    <button onclick="showAdminLogin()" id="admin-tab" class="text-amber-300/60 hover:text-amber-100 text-sm md:text-base font-semibold transition-all duration-300 pb-1 border-b-2 border-transparent">Admin</button>
                 </div>
             </div>
         </div>
@@ -380,9 +380,25 @@
 
         // Admin authentication
         function showAdminLogin() {
+            // Hide all sections first
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('hero-banner').classList.add('hidden');
+            document.getElementById('custom-order-section').classList.add('hidden');
+            document.getElementById('admin-section').classList.add('hidden');
+
+            // Show login modal
             document.getElementById('admin-login-modal').classList.remove('hidden');
             document.getElementById('admin-password').value = '';
             document.getElementById('login-error').classList.add('hidden');
+
+            // Update tabs - only admin should be active
+            document.getElementById('home-tab').classList.remove('border-amber-400');
+            document.getElementById('home-tab').classList.add('border-transparent', 'text-amber-300/60');
+            document.getElementById('custom-tab').classList.remove('border-amber-400');
+            document.getElementById('custom-tab').classList.add('border-transparent', 'text-amber-300/60');
+            document.getElementById('admin-tab').classList.remove('border-transparent', 'text-amber-300/60');
+            document.getElementById('admin-tab').classList.add('border-amber-400');
+
             // Allow Enter key to submit
             document.getElementById('admin-password').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
@@ -393,6 +409,7 @@
 
         function cancelAdminLogin() {
             document.getElementById('admin-login-modal').classList.add('hidden');
+            showHome();
         }
 
         function verifyAdminPassword() {
@@ -415,12 +432,12 @@
             document.getElementById('admin-section').classList.remove('hidden');
 
             // Update tab styling
-            document.getElementById('admin-tab').classList.add('border-b-2', 'border-amber-400');
-            document.getElementById('admin-tab').classList.remove('text-amber-300/60');
-            document.getElementById('home-tab').classList.remove('border-b-2', 'border-amber-400');
-            document.getElementById('home-tab').classList.add('text-amber-300/60');
-            document.getElementById('custom-tab').classList.remove('border-b-2', 'border-amber-400');
-            document.getElementById('custom-tab').classList.add('text-amber-300/60');
+            document.getElementById('admin-tab').classList.remove('border-transparent', 'text-amber-300/60');
+            document.getElementById('admin-tab').classList.add('border-amber-400');
+            document.getElementById('home-tab').classList.remove('border-amber-400');
+            document.getElementById('home-tab').classList.add('border-transparent', 'text-amber-300/60');
+            document.getElementById('custom-tab').classList.remove('border-amber-400');
+            document.getElementById('custom-tab').classList.add('border-transparent', 'text-amber-300/60');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
             renderAdminProductsList();
@@ -707,10 +724,16 @@
             document.getElementById('home-section').classList.remove('hidden');
             document.getElementById('hero-banner').classList.remove('hidden');
             document.getElementById('custom-order-section').classList.add('hidden');
-            document.getElementById('home-tab').classList.add('border-b-2', 'border-amber-400');
-            document.getElementById('home-tab').classList.remove('text-amber-300/60');
-            document.getElementById('custom-tab').classList.remove('border-b-2', 'border-amber-400');
-            document.getElementById('custom-tab').classList.add('text-amber-300/60');
+            document.getElementById('admin-section').classList.add('hidden');
+
+            // Update tab styling
+            document.getElementById('home-tab').classList.remove('border-transparent', 'text-amber-300/60');
+            document.getElementById('home-tab').classList.add('border-amber-400');
+            document.getElementById('custom-tab').classList.remove('border-amber-400');
+            document.getElementById('custom-tab').classList.add('border-transparent', 'text-amber-300/60');
+            document.getElementById('admin-tab').classList.remove('border-amber-400');
+            document.getElementById('admin-tab').classList.add('border-transparent', 'text-amber-300/60');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -746,10 +769,16 @@
             document.getElementById('home-section').classList.add('hidden');
             document.getElementById('hero-banner').classList.add('hidden');
             document.getElementById('custom-order-section').classList.remove('hidden');
-            document.getElementById('custom-tab').classList.add('border-b-2', 'border-amber-400');
-            document.getElementById('custom-tab').classList.remove('text-amber-300/60');
-            document.getElementById('home-tab').classList.remove('border-b-2', 'border-amber-400');
-            document.getElementById('home-tab').classList.add('text-amber-300/60');
+            document.getElementById('admin-section').classList.add('hidden');
+
+            // Update tab styling
+            document.getElementById('custom-tab').classList.remove('border-transparent', 'text-amber-300/60');
+            document.getElementById('custom-tab').classList.add('border-amber-400');
+            document.getElementById('home-tab').classList.remove('border-amber-400');
+            document.getElementById('home-tab').classList.add('border-transparent', 'text-amber-300/60');
+            document.getElementById('admin-tab').classList.remove('border-amber-400');
+            document.getElementById('admin-tab').classList.add('border-transparent', 'text-amber-300/60');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
